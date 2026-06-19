@@ -220,7 +220,7 @@
   </main>
 
   <script>
-    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwdIORroKpLoaLhBY5BL8Cn65c7QxT-DjJVacGr72mf60M0wDghq-9EbwW1MGbMd4ee4g/exec";
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwWe8XW1kiYurRs0o9g7D9NlRdTnrC-Xp5YKvn45lihMdZspyJuUSx-ajt4y64afiC_/exec";
 
     document.addEventListener('change', (e) => {
       if (e.target.classList.contains('currently-used')) {
@@ -346,7 +346,7 @@
       const payload = gatherPayload();
       
       try {
-        await fetch(APPS_SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+        await fetch(APPS_SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) });
         document.getElementById('loadingState').classList.add('hidden');
         document.getElementById('successState').classList.remove('hidden');
       } catch (error) {
