@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Skills Survey</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <style>
+    body { background-color: #ffffff; font-family: 'Inter', sans-serif; min-height: 100vh; position: relative; overflow-x: hidden; }
+    .noise-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 50; opacity: 0.04; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); mix-blend-mode: multiply; }
+    .abstract-lines { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.6; pointer-events: none; }
+    .main-card { background: rgba(255, 255, 255, 0.95); box-shadow: 0 20px 50px -12px rgba(15, 23, 42, 0.08); backdrop-filter: blur(12px); border: 1px solid rgba(226, 232, 240, 0.8); }
+    .section-header { background-color: #1e3a8a; color: #ffffff; padding: 2rem 2rem 2.5rem 2rem; margin: -2rem -2rem 2rem -2rem; border-top-left-radius: 2rem; border-top-right-radius: 2rem; border-bottom: 4px solid #f97316; }
+    @media (min-width: 768px) { .section-header { padding: 2.5rem 3rem 3rem 3rem; margin: -3rem -3rem 2.5rem -3rem; } }
+    .modern-input { background: #f8fafc; border: 1px solid #e2e8f0; transition: all 0.3s ease; color: #0f172a; }
+    .modern-input:focus:not(:disabled) { background: #ffffff; border-color: #1e3a8a; box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.08); outline: none; transform: translateY(-2px); }
+    .modern-input:disabled { background: #f1f5f9; color: #cbd5e1; border-color: #e2e8f0; cursor: not-allowed; opacity: 0.6; transform: none; }
+    .step-container { display: none; opacity: 0; transform: translateX(30px); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+    .step-container.active { display: block; opacity: 1; transform: translateX(0); display: flex; flex-direction: column; min-height: 100%; }
+    .step-container.exit { transform: translateX(-30px); opacity: 0; }
+    .btn-primary { background: #f97316; transition: all 0.3s ease; color: white; box-shadow: 0 8px 20px -6px rgba(249, 115, 22, 0.4); }
+    .btn-primary:hover { background: #ea580c; transform: translateY(-2px); box-shadow: 0 12px 25px -6px rgba(249, 115, 22, 0.5); }
+    .btn-secondary { background: #ffffff; color: #1e3a8a; border: 1px solid #cbd5e1; transition: all 0.3s ease; }
+    .btn-secondary:hover { background: #f1f5f9; border-color: #94a3b8; transform: translateY(-2px); }
+    ::-webkit-scrollbar { height: 8px; width: 8px; } ::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 10px; } ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; } ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    @keyframes popIn { 0% { transform: scale(0); opacity: 0; } 80% { transform: scale(1.1); opacity: 1; } 100% { transform: scale(1); } }
+  </style>
+</head>
+<body class="flex items-center justify-center p-4 md:p-8">
+
+  <div class="noise-overlay"></div>
+  <svg class="abstract-lines" viewBox="0 0 1440 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><g fill="none"><path d="M-100,500 C200,300 400,700 800,500 C1100,350 1300,600 1500,450" stroke="#1e3a8a" stroke-width="1.5" opacity="0.15" /><path d="M-100,520 C220,320 420,720 820,520 C1120,370 1320,620 1500,470" stroke="#1e3a8a" stroke-width="1.5" opacity="0.15" /><path d="M-100,540 C240,340 440,740 840,540 C1140,390 1340,640 1500,490" stroke="#1e3a8a" stroke-width="1.5" opacity="0.15" /><path d="M-100,150 C300,50 600,250 900,100 C1200,-50 1400,200 1600,150" stroke="#f97316" stroke-width="1" opacity="0.1" /><path d="M-100,170 C320,70 620,270 920,120 C1220,-30 1420,220 1600,170" stroke="#f97316" stroke-width="1" opacity="0.1" /></g></svg>
+
+  <main class="main-card w-full max-w-5xl rounded-[2rem] p-8 md:p-12 relative overflow-hidden text-slate-800 z-10 shadow-2xl">
+    
+    <!-- STEP 1: Profile -->
+    <section id="step1" class="step-container active">
+      <div class="section-header">
+        <h1 class="text-3xl md:text-4xl font-black tracking-tight">Skills Survey</h1>
+        <h2 class="text-lg md:text-xl font-medium text-blue-200 mt-2">Cover Letter & Profile</h2>
+      </div>
+      <div class="space-y-4 text-slate-600 font-medium text-base leading-relaxed">
+        <p>Dear CCA Member,</p>
+        <p>Great day. We are sending this Skills Survey to determine the technical training requirements of CCA members. This survey is particularly intended for contractors engaged in civil works and specialty works.</p>
+        <p>Accomplishing this survey would take approximately 5 minutes only. By answering this survey, you are helping CCA craft a relevant training program that would improve the productivity of the workers and the competitiveness of its members.</p>
+        <p>Please accomplish this survey on or before June 26. Should you need assistance, please don't hesitate to call your CCA Secretariat.</p>
+        <p class="pt-2 font-bold text-slate-900">Thank you,<br>CCA Technical Working Group</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-8 mb-8">
+        <div><label class="block text-[#1e3a8a] font-bold mb-1 text-sm">Company *</label><input type="text" id="company" class="modern-input w-full rounded-xl p-3 font-medium"></div>
+        <div><label class="block text-[#1e3a8a] font-bold mb-1 text-sm">Representative who answered *</label><input type="text" id="representative" class="modern-input w-full rounded-xl p-3 font-medium"></div>
+        <div><label class="block text-[#1e3a8a] font-bold mb-1 text-sm">Position / Designation *</label><input type="text" id="position" class="modern-input w-full rounded-xl p-3 font-medium"></div>
+        <div><label class="block text-[#1e3a8a] font-bold mb-1 text-sm">Contact No. *</label><input type="text" id="contact" class="modern-input w-full rounded-xl p-3 font-medium"></div>
+        <div class="md:col-span-2"><label class="block text-[#1e3a8a] font-bold mb-1 text-sm">Email Address (For Confirmation Copy) *</label><input type="email" id="email" class="modern-input w-full rounded-xl p-3 font-medium" placeholder="your@email.com"></div>
+      </div>
+      <div class="flex justify-end mt-auto pt-4"><button onclick="navigate(1, 2)" class="btn-primary font-bold py-3 px-10 rounded-xl">Next &rarr;</button></div>
+      <div class="mt-8 pt-6 border-t border-slate-200 text-center opacity-80"><p class="text-xs font-bold text-[#1e3a8a] uppercase tracking-wide">Cebu Contractors Association, Inc.</p><p class="text-xs font-semibold text-slate-500 uppercase tracking-widest mt-0.5">Skills Survey</p></div>
+    </section>
+
+    <!-- STEP 2: Civil Works -->
+    <section id="step2" class="step-container">
+      <div class="section-header">
+        <h1 class="text-3xl md:text-4xl font-black tracking-tight">Civil Works</h1>
+        <p class="text-blue-200 font-medium mt-2">Please provide skills data to help CCA plan program/s for your company.</p>
+      </div>
+      <div class="bg-white rounded-2xl overflow-hidden shadow-sm overflow-x-auto border border-slate-200 mb-8">
+        <table class="w-full text-sm text-left">
+          <thead class="text-xs uppercase bg-[#f8fafc] text-[#1e3a8a] border-b border-slate-200">
+            <tr><th class="px-6 py-4 font-bold min-w-[150px]">Type of Skills</th><th class="px-4 py-4 font-bold">Currently Used</th><th class="px-4 py-4 font-bold text-center">No TESDA NC</th><th class="px-4 py-4 font-bold text-center">With NC</th><th class="px-4 py-4 font-bold text-center">Prospective Training</th><th class="px-4 py-4 font-bold text-center">Total</th></tr>
+          </thead>
+          <!-- NOTE: Added data-category attribute here for backend routing -->
+          <tbody data-category="Civil Works" class="divide-y divide-slate-100">
+            <script>
+              ['Carpentry', 'Formworks', 'Masonry', 'Scaffold erection', 'Steel works', 'Welding'].forEach(skill => {
+                document.write(`
+                  <tr class="hover:bg-slate-50/50 transition-colors group">
+                    <td class="px-6 py-4 font-bold text-slate-800 skill-name">${skill}</td>
+                    <td class="px-4 py-4"><select class="modern-input w-full rounded-lg p-2 font-semibold currently-used"><option value="" disabled selected>Select an option</option><option value="Yes">Yes</option><option value="No">No</option></select></td>
+                    <td class="px-4 py-4"><input type="number" min="0" value="0" class="modern-input row-calc no-nc w-full rounded-lg p-2 text-center font-bold"></td>
+                    <td class="px-4 py-4"><input type="number" min="0" value="0" class="modern-input row-calc with-nc w-full rounded-lg p-2 text-center font-bold"></td>
+                    <td class="px-4 py-4"><input type="number" min="0" value="0" class="modern-input row-calc prospective w-full rounded-lg p-2 text-center font-bold"></td>
+                    <td class="px-4 py-4 font-black text-xl text-center row-total text-[#f97316]">0</td>
+                  </tr>`);
+              });
+            </script>
+          </tbody>
+        </table>
+      </div>
+      <div class="flex justify-between mt-auto pt-4"><button onclick="navigate(2, 1)" class="btn-secondary font-bold py-3 px-8 rounded-xl">&larr; Back</button><button onclick="navigate(2, 3)" class="btn-primary font-bold py-3 px-10 rounded-xl">Next &rarr;</button></div>
+      <div class="mt-8 pt-6 border-t border-slate-200 text-center opacity-80"><p class="text-xs font-bold text-[#1e3a8a] uppercase tracking-wide">Cebu Contractors Association, Inc.</p></div>
+    </section>
+
+    <!-- STEP 3: Specialty and finishing works -->
+    <section id="step3" class="step-container">
+      <div class="section-header">
+        <h1 class="text-3xl md:text-4xl font-black tracking-tight">Specialty & Finishing</h1>
+        <p class="text-blue-200 font-medium mt-2">Please provide skills data to help CCA plan program/s for your company.</p>
+      </div>
+      <div class="bg-white rounded-2xl overflow-hidden shadow-sm overflow-x-auto border border-slate-200 mb-8">
+        <table class="w-full text-sm text-left">
+          <thead class="text-xs uppercase bg-[#f8fafc] text-[#1e3a8a] border-b border-slate-200">
+            <tr><th class="px-6 py-4 font-bold min-w-[150px]">Type of Skills</th><th class="px-4 py-4 font-bold">Currently Used</th><th class="px-4 py-4 font-bold text-center">No TESDA NC</th><th class="px-4 py-4 font-bold text-center">With NC</th><th class="px-4 py-4 font-bold text-center">Prospective Training</th><th class="px-4 py-4 font-bold text-center">Total</th></tr>
+          </thead>
+          <!-- NOTE: Added data-category -->
+          <tbody data-category="Specialty & Finishing" class="divide-y divide-slate-100">
+            <script>
+              ['Construction painting', 'Electrical installation and maintenance', 'Plumbing', 'Tile setting'].forEach(skill => {
+                document.write(`
+                  <tr class="hover:bg-slate-50/50 transition-colors"><td class="px-6 py-4 font-bold text-slate-800 skill-name">${skill}</td><td class="px-4 py-4"><select class="modern-input w-full rounded-lg p-2 font-semibold currently-used"><option value="" disabled selected>Select an option</option><option value="Yes">Yes</option><option value="No">No</option></select></td><td class="px-4 py-4"><input type="number" min="0" value="0" class="modern-input row-calc no-nc w-full rounded-lg p-2 text-center font-bold"></td><td class="px-4 py-4"><input type="number" min="0" value="0" class="modern-input row-calc with-nc w-full rounded-lg p-2 text-center font-bold"></td><td class="px-4 py-4"><input type="number" min="0" value="0" class="modern-input row-calc prospective w-full rounded-lg p-2 text-center font-bold"></td><td class="px-4 py-4 font-black text-xl text-center row-total text-[#f97316]">0</td></tr>
+                `);
+              });
+            </script>
+          </tbody>
+        </table>
+      </div>
+      <div class="flex justify-between mt-auto pt-4"><button onclick="navigate(3, 2)" class="btn-secondary font-bold py-3 px-8 rounded-xl">&larr; Back</button><button onclick="navigate(3, 4)" class="btn-primary font-bold py-3 px-10 rounded-xl">Next &rarr;</button></div>
+      <div class="mt-8 pt-6 border-t border-slate-200 text-center opacity-80"><p class="text-xs font-bold text-[#1e3a8a] uppercase tracking-wide">Cebu Contractors Association, Inc.</p></div>
+    </section>
+
+    <!-- STEP 4: Heavy Equipment -->
+    <section id="step4" class="step-container">
+      <div class="section-header">
+        <h1 class="text-3xl md:text-4xl font-black tracking-tight">Heavy Equipment</h1>
+        <p class="text-blue-200 font-medium mt-2">Please provide skills data to help CCA plan program/s for your company.</p>
+      </div>
+      <div class="bg-white rounded-2xl overflow-hidden shadow-sm overflow-x-auto border border-slate-200 mb-8">
+        <table class="w-full text-sm text-left">
+          <thead class="text-xs uppercase bg-[#f8fafc] text-[#1e3a8a] border-b border-slate-200">
+            <tr><th class="px-6 py-4 font-bold min-w-[150px]">Type of Skills</th><th class="px-4 py-4 font-bold">Currently Used</th><th class="px-4 py-4 font-bold text-center">No TESDA NC</th><th class="px-4 py-4 font-bold text-center">With NC</th><th class="px-4 py-4 font-bold text-center">Prospective Training</th><th class="px-4 py-4 font-bold text-center">Total</th></tr>
+          </thead>
+          <!-- NOTE: Added data-category -->
+          <tbody data-category="Heavy Equipment" class="divide-y divide-slate-100">
+            <script>
+              ['Backhoe', 'Excavator', 'Bulldozer', 'Roadroller', 'Forklift', 'Crane'].forEach(skill => {
+                document.write(`
+                  <tr class="hover:bg-slate-50/50 transition-colors"><td class="px-6 py-4 font-bold text-slate-800 skill-name">${skill}</td><td class="px-4 py-4"><select class="modern-input w-full rounded-lg p-2 font-semibold currently-used"><option value="" disabled selected>Select an option</option><option value="Yes">Yes</option><option value="No">No</option></select></td><td class="px-4 py-4"><input type="number" min="0" value="0" class="modern-input row-calc no-nc w-full rounded-lg p-2 text-center font-bold"></td><td class="px-4 py-4"><input type="number" min="0" value="0" class="modern-input row-calc with-nc w-full rounded-lg p-2 text-center font-bold"></td><td class="px-4 py-4"><input type="number" min="0" value="0" class="modern-input row-calc prospective w-full rounded-lg p-2 text-center font-bold"></td><td class="px-4 py-4 font-black text-xl text-center row-total text-[#f97316]">0</td></tr>
+                `);
+              });
+            </script>
+          </tbody>
+        </table>
+      </div>
+      <div class="flex justify-between mt-auto pt-4"><button onclick="navigate(4, 3)" class="btn-secondary font-bold py-3 px-8 rounded-xl">&larr; Back</button><button onclick="navigate(4, 5)" class="btn-primary font-bold py-3 px-10 rounded-xl">Next &rarr;</button></div>
+      <div class="mt-8 pt-6 border-t border-slate-200 text-center opacity-80"><p class="text-xs font-bold text-[#1e3a8a] uppercase tracking-wide">Cebu Contractors Association, Inc.</p></div>
+    </section>
+
+    <!-- STEP 5: Other Skills -->
+    <section id="step5" class="step-container">
+      <div class="section-header">
+        <h1 class="text-3xl md:text-4xl font-black tracking-tight">Other Skills</h1>
+        <p class="text-blue-200 font-medium mt-2">Other skills not mentioned above that are relevant to your operations.</p>
+      </div>
+      <div class="bg-white rounded-2xl overflow-hidden shadow-sm overflow-x-auto border border-slate-200">
+        <table class="w-full text-sm text-left">
+          <thead class="text-xs uppercase bg-[#f8fafc] text-[#1e3a8a] border-b border-slate-200">
+            <tr><th class="px-6 py-4 font-bold min-w-[200px]">Specific Skill Name</th><th class="px-4 py-4 font-bold text-center">No TESDA NC</th><th class="px-4 py-4 font-bold text-center">With NC</th><th class="px-4 py-4 font-bold text-center">Prospective Training</th><th class="px-4 py-4 font-bold text-center">Total</th></tr>
+          </thead>
+          <tbody id="otherSkillsBody" data-category="Other Skills" class="divide-y divide-slate-100">
+            <script>
+              for(let i=0; i<3; i++) {
+                document.write(`<tr class="hover:bg-slate-50/50 transition-colors"><td class="px-4 py-4"><input type="text" class="modern-input other-skill-name w-full rounded-lg p-2 font-semibold" placeholder="Input other skills..."></td><td class="px-4 py-4"><input type="number" min="0" value="0" class="modern-input row-calc no-nc w-full rounded-lg p-2 text-center font-bold"></td><td class="px-4 py-4"><input type="number" min="0" value="0" class="modern-input row-calc with-nc w-full rounded-lg p-2 text-center font-bold"></td><td class="px-4 py-4"><input type="number" min="0" value="0" class="modern-input row-calc prospective w-full rounded-lg p-2 text-center font-bold"></td><td class="px-4 py-4 font-black text-xl text-center row-total text-[#f97316]">0</td></tr>`);
+              }
+            </script>
+          </tbody>
+        </table>
+      </div>
+      <button type="button" onclick="addOtherSkillRow()" class="mt-4 text-[#1e3a8a] font-bold hover:text-[#f97316] transition-colors flex items-center mb-8 inline-flex px-2"><svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"></path></svg>Add New Slot</button>
+      <div class="flex justify-between mt-auto pt-4 border-t border-slate-100"><button onclick="navigate(5, 4)" class="btn-secondary font-bold py-3 px-8 rounded-xl">&larr; Back</button><button onclick="navigate(5, 6)" class="btn-primary font-bold py-3 px-10 rounded-xl">Next &rarr;</button></div>
+      <div class="mt-8 pt-6 border-t border-slate-200 text-center opacity-80"><p class="text-xs font-bold text-[#1e3a8a] uppercase tracking-wide">Cebu Contractors Association, Inc.</p></div>
+    </section>
+
+    <!-- STEP 6: Final Section -->
+    <section id="step6" class="step-container">
+      <div class="section-header">
+        <h1 class="text-3xl md:text-4xl font-black tracking-tight">Ready to Submit</h1>
+      </div>
+      <div class="space-y-4 text-slate-600 font-medium text-lg">
+        <p>Thank you for accomplishing this skills survey. The Secretariat of CCA will review and consolidate the responses of the members who participated in the survey.</p>
+        <p>If you have additional remarks or comments, please write these on the space provided below.</p>
+        <p class="pt-2 font-bold text-[#1e3a8a]">Thank you once again.<br>CCA Technical Working Group & Secretariat</p>
+      </div>
+      <div class="space-y-4 mt-6 mb-8">
+        <div><label class="block text-[#1e3a8a] font-bold mb-2 text-sm uppercase tracking-wide">Additional Remarks</label><textarea id="remarksData" rows="4" class="modern-input w-full rounded-xl p-4 font-medium resize-none placeholder-slate-400" placeholder="Type your comments here..."></textarea></div>
+      </div>
+      <div class="flex justify-between mt-auto pt-4">
+        <button onclick="navigate(6, 5)" class="btn-secondary font-bold py-3 px-8 rounded-xl">&larr; Back</button>
+        <!-- Added Preview Button Here -->
+        <div class="flex space-x-3">
+            <button onclick="showPreview()" class="btn-secondary font-bold py-3 px-8 rounded-xl border-[#1e3a8a]">Preview Responses</button>
+            <button onclick="submitSurvey()" id="submitBtn" class="btn-primary font-extrabold py-3 px-12 rounded-xl flex items-center justify-center min-w-[160px]">Submit Survey</button>
+        </div>
+      </div>
+      <div class="mt-8 pt-6 border-t border-slate-200 text-center opacity-80"><p class="text-xs font-bold text-[#1e3a8a] uppercase tracking-wide">Cebu Contractors Association, Inc.</p></div>
+    </section>
+
+    <!-- STEP 7: Success Screen -->
+    <section id="step7" class="step-container text-center space-y-6 py-16">
+      <div id="loadingState" class="space-y-6"><div class="inline-block relative w-20 h-20"><div class="absolute top-0 left-0 w-full h-full border-4 border-slate-200 rounded-full"></div><div class="absolute top-0 left-0 w-full h-full border-4 border-[#1e3a8a] rounded-full border-t-transparent animate-spin"></div></div><h2 class="text-2xl font-bold text-slate-800 animate-pulse">Processing Submission...</h2></div>
+      <div id="successState" class="hidden space-y-6"><div class="mx-auto w-24 h-24 bg-[#f97316] rounded-full flex items-center justify-center shadow-xl transform scale-0 animate-[popIn_0.5s_ease-out_forwards]"><svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div><h1 class="text-4xl font-extrabold text-[#1e3a8a]">Submission Successful!</h1><p class="text-slate-600 font-medium text-lg">Your data has been securely recorded. A confirmation email with a summary of your responses has been dispatched to your inbox.</p></div>
+    </section>
+
+    <!-- PREVIEW MODAL OVERLAY -->
+    <div id="previewModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 opacity-0 transition-opacity duration-300">
+      <div class="bg-white rounded-2xl w-full max-w-4xl max-h-[85vh] overflow-hidden shadow-2xl relative flex flex-col">
+        <div class="bg-[#1e3a8a] text-white p-6 flex justify-between items-center">
+            <h2 class="text-2xl font-bold">Review Your Responses</h2>
+            <button onclick="closePreview()" class="text-white hover:text-orange-300 font-bold text-xl">&times; Close</button>
+        </div>
+        <div id="previewContent" class="p-8 overflow-y-auto space-y-6 text-sm text-slate-700">
+            <!-- Injected by Javascript -->
+        </div>
+        <div class="bg-slate-50 p-6 border-t border-slate-200 flex justify-end space-x-4">
+            <button onclick="closePreview()" class="btn-secondary font-bold py-2 px-6 rounded-xl">Edit Survey</button>
+            <button onclick="closePreview(); submitSurvey();" class="btn-primary font-bold py-2 px-8 rounded-xl">Looks Good, Submit</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwdIORroKpLoaLhBY5BL8Cn65c7QxT-DjJVacGr72mf60M0wDghq-9EbwW1MGbMd4ee4g/exec";
+
+    document.addEventListener('change', (e) => {
+      if (e.target.classList.contains('currently-used')) {
+        const row = e.target.closest('tr');
+        const inputs = row.querySelectorAll('.row-calc');
+        const total = row.querySelector('.row-total');
+        if (e.target.value === 'No') {
+          inputs.forEach(input => { input.disabled = true; input.value = 0; });
+          total.textContent = '0';
+        } else {
+          inputs.forEach(input => { input.disabled = false; });
+        }
+      }
+    });
+
+    document.addEventListener('input', (e) => {
+      if (e.target.classList.contains('row-calc')) {
+        const row = e.target.closest('tr');
+        const noNc = parseInt(row.querySelector('.no-nc').value) || 0;
+        const withNc = parseInt(row.querySelector('.with-nc').value) || 0;
+        const prospective = parseInt(row.querySelector('.prospective').value) || 0;
+        row.querySelector('.row-total').textContent = noNc + withNc + prospective;
+      }
+    });
+
+    function addOtherSkillRow() {
+      const tbody = document.getElementById('otherSkillsBody');
+      const row = document.createElement('tr');
+      row.className = 'hover:bg-slate-50/50 transition-colors';
+      row.innerHTML = `<td class="px-4 py-4"><input type="text" class="modern-input other-skill-name w-full rounded-lg p-2 font-semibold" placeholder="Input other skills..."></td><td class="px-4 py-4"><input type="number" min="0" value="0" class="modern-input row-calc no-nc w-full rounded-lg p-2 text-center font-bold"></td><td class="px-4 py-4"><input type="number" min="0" value="0" class="modern-input row-calc with-nc w-full rounded-lg p-2 text-center font-bold"></td><td class="px-4 py-4"><input type="number" min="0" value="0" class="modern-input row-calc prospective w-full rounded-lg p-2 text-center font-bold"></td><td class="px-4 py-4 font-black text-xl text-center row-total text-[#f97316]">0</td>`;
+      tbody.appendChild(row);
+    }
+
+    function navigate(fromStep, toStep) {
+      if(fromStep === 1 && toStep === 2) {
+        const email = document.getElementById('email').value;
+        const company = document.getElementById('company').value;
+        if(!email || !company) { alert("Please fill in the required profile fields (Company & Email) before proceeding."); return; }
+      }
+      const fromEl = document.getElementById(`step${fromStep}`);
+      const toEl = document.getElementById(`step${toStep}`);
+      fromEl.classList.remove('active'); fromEl.classList.add('exit');
+      setTimeout(() => {
+        fromEl.style.display = 'none'; fromEl.classList.remove('exit');
+        toEl.style.display = 'flex'; void toEl.offsetWidth; toEl.classList.add('active');
+      }, 400); 
+    }
+
+    // Gathers all data from the form (used by both Preview and Submit)
+    function gatherPayload() {
+      const payload = {
+        meta: {
+          company: document.getElementById('company').value || "N/A",
+          representative: document.getElementById('representative').value || "N/A",
+          position: document.getElementById('position').value || "N/A",
+          contact: document.getElementById('contact').value || "N/A",
+          email: document.getElementById('email').value,
+          remarks: document.getElementById('remarksData').value || "None"
+        },
+        skillsData: []
+      };
+
+      document.querySelectorAll('tbody tr').forEach(row => {
+        const category = row.closest('tbody').getAttribute('data-category');
+        const standardSkillName = row.querySelector('.skill-name');
+        const otherSkillName = row.querySelector('.other-skill-name');
+        let skillName = standardSkillName ? standardSkillName.innerText : (otherSkillName && otherSkillName.value.trim() !== "" ? otherSkillName.value.trim() : "");
+        if (!skillName) return;
+
+        const currentlyUsedDrop = row.querySelector('.currently-used');
+        const currentlyUsed = currentlyUsedDrop ? currentlyUsedDrop.value : "N/A";
+        
+        const noNc = parseInt(row.querySelector('.no-nc').value) || 0;
+        const withNc = parseInt(row.querySelector('.with-nc').value) || 0;
+        const prospective = parseInt(row.querySelector('.prospective').value) || 0;
+        const total = noNc + withNc + prospective;
+
+        if (total > 0 || currentlyUsed === "Yes" || otherSkillName) {
+          payload.skillsData.push({ category, skillName, currentlyUsed, noNc, withNc, prospective, total });
+        }
+      });
+      return payload;
+    }
+
+    // Modal Preview Logic
+    function showPreview() {
+      const payload = gatherPayload();
+      const content = document.getElementById('previewContent');
+      
+      let html = `<div class="grid grid-cols-2 gap-4 mb-6 bg-slate-100 p-4 rounded-xl border border-slate-200">
+        <div><strong class="text-[#1e3a8a]">Company:</strong> ${payload.meta.company}</div>
+        <div><strong class="text-[#1e3a8a]">Email:</strong> ${payload.meta.email}</div>
+        <div><strong class="text-[#1e3a8a]">Representative:</strong> ${payload.meta.representative}</div>
+        <div><strong class="text-[#1e3a8a]">Remarks:</strong> ${payload.meta.remarks}</div>
+      </div>`;
+
+      if(payload.skillsData.length === 0) {
+          html += `<p class="text-slate-500 italic">No specific skills data has been inputted yet.</p>`;
+      } else {
+          html += `<table class="w-full text-left border-collapse">
+            <thead class="bg-slate-200 text-[#1e3a8a]"><tr><th class="p-3 border">Category</th><th class="p-3 border">Skill</th><th class="p-3 border text-center">Currently Used</th><th class="p-3 border text-center">Total Required</th></tr></thead><tbody>`;
+          payload.skillsData.forEach(row => {
+              html += `<tr class="border-b border-slate-100"><td class="p-3 border">${row.category}</td><td class="p-3 border font-bold">${row.skillName}</td><td class="p-3 border text-center">${row.currentlyUsed}</td><td class="p-3 border text-center text-[#f97316] font-bold">${row.total}</td></tr>`;
+          });
+          html += `</tbody></table>`;
+      }
+
+      content.innerHTML = html;
+      const modal = document.getElementById('previewModal');
+      modal.classList.remove('hidden');
+      setTimeout(() => modal.classList.remove('opacity-0'), 10);
+    }
+
+    function closePreview() {
+      const modal = document.getElementById('previewModal');
+      modal.classList.add('opacity-0');
+      setTimeout(() => modal.classList.add('hidden'), 300);
+    }
+
+    // Final Submission Logic
+    async function submitSurvey() {
+      navigate(6, 7);
+      const payload = gatherPayload();
+      
+      try {
+        await fetch(APPS_SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+        document.getElementById('loadingState').classList.add('hidden');
+        document.getElementById('successState').classList.remove('hidden');
+      } catch (error) {
+        alert('Failed to send data. Please check your network connection.');
+        navigate(7, 6); 
+      }
+    }
+  </script>
+</body>
+</html>
