@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CCA Modern Skills Survey</title>
+  <title>CCA Skills Survey</title>
   <script src="https://cdn.tailwindcss.com"></script>
   
   <style>
@@ -44,7 +44,7 @@
     <section id="step1" class="step-container active">
       <div class="section-header">
         <h1 class="text-3xl md:text-4xl font-black tracking-tight">Skills Survey</h1>
-        <h2 class="text-lg md:text-xl font-medium text-blue-200 mt-2">Cover Letter & Profile</h2>
+        <h2 class="text-lg md:text-xl font-medium text-blue-200 mt-2">CEBU CONTRACTORS ASSOCIATION, INC.</h2>
       </div>
       <div class="space-y-4 text-slate-600 font-medium text-base leading-relaxed">
         <p>Dear CCA Member,</p>
@@ -74,18 +74,19 @@
       <div class="bg-white rounded-2xl overflow-hidden shadow-sm overflow-x-auto border border-slate-200 mb-8">
         <table class="w-full text-sm text-left">
           <thead class="text-xs uppercase bg-[#f8fafc] text-[#1e3a8a] border-b border-slate-200">
-            <tr><th class="px-6 py-4 font-bold min-w-[150px]">Type of Skills</th><th class="px-4 py-4 font-bold">Currently Used</th><th class="px-4 py-4 font-bold text-center">No TESDA NC</th><th class="px-4 py-4 font-bold text-center">With NC</th><th class="px-4 py-4 font-bold text-center">Prospective Training</th><th class="px-4 py-4 font-bold text-center">Total</th></tr>
+            <tr><th class="px-6 py-4 font-bold min-w-[150px]">Type of Skills</th><th class="px-4 py-4 font-bold min-w-[180px]">Currently Used</th><th class="px-4 py-4 font-bold text-center">No TESDA NC</th><th class="px-4 py-4 font-bold text-center">With NC</th><th class="px-4 py-4 font-bold text-center">Prospective Training</th><th class="px-4 py-4 font-bold text-center">Total</th></tr>
           </thead>
           <tbody data-category="Civil Works" class="divide-y divide-slate-100">
             <script>
               ['Carpentry', 'Formworks', 'Masonry', 'Scaffold erection', 'Steel works', 'Welding'].forEach(skill => {
+                // UPDATED: Added "disabled" directly to the number inputs by default
                 document.write(`
                   <tr class="hover:bg-slate-50/50 transition-colors group">
                     <td class="px-6 py-4 font-bold text-slate-800 skill-name">${skill}</td>
-                    <td class="px-4 py-4"><select class="modern-input w-full rounded-lg p-2 font-semibold currently-used"><option value="" disabled selected>Select an option</option><option value="Yes">Yes</option><option value="No">No</option></select></td>
-                    <td class="px-4 py-4"><input type="number" min="0" value="0" class="modern-input row-calc no-nc w-full rounded-lg p-2 text-center font-bold"></td>
-                    <td class="px-4 py-4"><input type="number" min="0" value="0" class="modern-input row-calc with-nc w-full rounded-lg p-2 text-center font-bold"></td>
-                    <td class="px-4 py-4"><input type="number" min="0" value="0" class="modern-input row-calc prospective w-full rounded-lg p-2 text-center font-bold"></td>
+                    <td class="px-4 py-4"><select class="modern-input w-full rounded-lg py-2 px-3 text-sm font-semibold currently-used"><option value="" disabled selected>Select an option</option><option value="Yes">Yes</option><option value="No">No</option></select></td>
+                    <td class="px-4 py-4"><input type="number" min="0" value="0" disabled class="modern-input row-calc no-nc w-full rounded-lg p-2 text-center font-bold"></td>
+                    <td class="px-4 py-4"><input type="number" min="0" value="0" disabled class="modern-input row-calc with-nc w-full rounded-lg p-2 text-center font-bold"></td>
+                    <td class="px-4 py-4"><input type="number" min="0" value="0" disabled class="modern-input row-calc prospective w-full rounded-lg p-2 text-center font-bold"></td>
                     <td class="px-4 py-4 font-black text-xl text-center row-total text-[#f97316]">0</td>
                   </tr>`);
               });
@@ -105,13 +106,20 @@
       <div class="bg-white rounded-2xl overflow-hidden shadow-sm overflow-x-auto border border-slate-200 mb-8">
         <table class="w-full text-sm text-left">
           <thead class="text-xs uppercase bg-[#f8fafc] text-[#1e3a8a] border-b border-slate-200">
-            <tr><th class="px-6 py-4 font-bold min-w-[150px]">Type of Skills</th><th class="px-4 py-4 font-bold">Currently Used</th><th class="px-4 py-4 font-bold text-center">No TESDA NC</th><th class="px-4 py-4 font-bold text-center">With NC</th><th class="px-4 py-4 font-bold text-center">Prospective Training</th><th class="px-4 py-4 font-bold text-center">Total</th></tr>
+            <tr><th class="px-6 py-4 font-bold min-w-[150px]">Type of Skills</th><th class="px-4 py-4 font-bold min-w-[180px]">Currently Used</th><th class="px-4 py-4 font-bold text-center">No TESDA NC</th><th class="px-4 py-4 font-bold text-center">With NC</th><th class="px-4 py-4 font-bold text-center">Prospective Training</th><th class="px-4 py-4 font-bold text-center">Total</th></tr>
           </thead>
           <tbody data-category="Specialty & Finishing" class="divide-y divide-slate-100">
             <script>
               ['Construction painting', 'Electrical installation and maintenance', 'Plumbing', 'Tile setting'].forEach(skill => {
                 document.write(`
-                  <tr class="hover:bg-slate-50/50 transition-colors"><td class="px-6 py-4 font-bold text-slate-800 skill-name">${skill}</td><td class="px-4 py-4"><select class="modern-input w-full rounded-lg p-2 font-semibold currently-used"><option value="" disabled selected>Select an option</option><option value="Yes">Yes</option><option value="No">No</option></select></td><td class="px-4 py-4"><input type="number" min="0" value="0" class="modern-input row-calc no-nc w-full rounded-lg p-2 text-center font-bold"></td><td class="px-4 py-4"><input type="number" min="0" value="0" class="modern-input row-calc with-nc w-full rounded-lg p-2 text-center font-bold"></td><td class="px-4 py-4"><input type="number" min="0" value="0" class="modern-input row-calc prospective w-full rounded-lg p-2 text-center font-bold"></td><td class="px-4 py-4 font-black text-xl text-center row-total text-[#f97316]">0</td></tr>
+                  <tr class="hover:bg-slate-50/50 transition-colors">
+                    <td class="px-6 py-4 font-bold text-slate-800 skill-name">${skill}</td>
+                    <td class="px-4 py-4"><select class="modern-input w-full rounded-lg py-2 px-3 text-sm font-semibold currently-used"><option value="" disabled selected>Select an option</option><option value="Yes">Yes</option><option value="No">No</option></select></td>
+                    <td class="px-4 py-4"><input type="number" min="0" value="0" disabled class="modern-input row-calc no-nc w-full rounded-lg p-2 text-center font-bold"></td>
+                    <td class="px-4 py-4"><input type="number" min="0" value="0" disabled class="modern-input row-calc with-nc w-full rounded-lg p-2 text-center font-bold"></td>
+                    <td class="px-4 py-4"><input type="number" min="0" value="0" disabled class="modern-input row-calc prospective w-full rounded-lg p-2 text-center font-bold"></td>
+                    <td class="px-4 py-4 font-black text-xl text-center row-total text-[#f97316]">0</td>
+                  </tr>
                 `);
               });
             </script>
@@ -130,13 +138,20 @@
       <div class="bg-white rounded-2xl overflow-hidden shadow-sm overflow-x-auto border border-slate-200 mb-8">
         <table class="w-full text-sm text-left">
           <thead class="text-xs uppercase bg-[#f8fafc] text-[#1e3a8a] border-b border-slate-200">
-            <tr><th class="px-6 py-4 font-bold min-w-[150px]">Type of Skills</th><th class="px-4 py-4 font-bold">Currently Used</th><th class="px-4 py-4 font-bold text-center">No TESDA NC</th><th class="px-4 py-4 font-bold text-center">With NC</th><th class="px-4 py-4 font-bold text-center">Prospective Training</th><th class="px-4 py-4 font-bold text-center">Total</th></tr>
+            <tr><th class="px-6 py-4 font-bold min-w-[150px]">Type of Skills</th><th class="px-4 py-4 font-bold min-w-[180px]">Currently Used</th><th class="px-4 py-4 font-bold text-center">No TESDA NC</th><th class="px-4 py-4 font-bold text-center">With NC</th><th class="px-4 py-4 font-bold text-center">Prospective Training</th><th class="px-4 py-4 font-bold text-center">Total</th></tr>
           </thead>
           <tbody data-category="Heavy Equipment" class="divide-y divide-slate-100">
             <script>
               ['Backhoe', 'Excavator', 'Bulldozer', 'Roadroller', 'Forklift', 'Crane'].forEach(skill => {
                 document.write(`
-                  <tr class="hover:bg-slate-50/50 transition-colors"><td class="px-6 py-4 font-bold text-slate-800 skill-name">${skill}</td><td class="px-4 py-4"><select class="modern-input w-full rounded-lg p-2 font-semibold currently-used"><option value="" disabled selected>Select an option</option><option value="Yes">Yes</option><option value="No">No</option></select></td><td class="px-4 py-4"><input type="number" min="0" value="0" class="modern-input row-calc no-nc w-full rounded-lg p-2 text-center font-bold"></td><td class="px-4 py-4"><input type="number" min="0" value="0" class="modern-input row-calc with-nc w-full rounded-lg p-2 text-center font-bold"></td><td class="px-4 py-4"><input type="number" min="0" value="0" class="modern-input row-calc prospective w-full rounded-lg p-2 text-center font-bold"></td><td class="px-4 py-4 font-black text-xl text-center row-total text-[#f97316]">0</td></tr>
+                  <tr class="hover:bg-slate-50/50 transition-colors">
+                    <td class="px-6 py-4 font-bold text-slate-800 skill-name">${skill}</td>
+                    <td class="px-4 py-4"><select class="modern-input w-full rounded-lg py-2 px-3 text-sm font-semibold currently-used"><option value="" disabled selected>Select an option</option><option value="Yes">Yes</option><option value="No">No</option></select></td>
+                    <td class="px-4 py-4"><input type="number" min="0" value="0" disabled class="modern-input row-calc no-nc w-full rounded-lg p-2 text-center font-bold"></td>
+                    <td class="px-4 py-4"><input type="number" min="0" value="0" disabled class="modern-input row-calc with-nc w-full rounded-lg p-2 text-center font-bold"></td>
+                    <td class="px-4 py-4"><input type="number" min="0" value="0" disabled class="modern-input row-calc prospective w-full rounded-lg p-2 text-center font-bold"></td>
+                    <td class="px-4 py-4 font-black text-xl text-center row-total text-[#f97316]">0</td>
+                  </tr>
                 `);
               });
             </script>
@@ -216,16 +231,20 @@
   </main>
 
   <script>
+    // UPDATED LOGIC: Inputs only unlock when "Yes" is explicitly selected
     document.addEventListener('change', (e) => {
       if (e.target.classList.contains('currently-used')) {
         const row = e.target.closest('tr');
         const inputs = row.querySelectorAll('.row-calc');
         const total = row.querySelector('.row-total');
-        if (e.target.value === 'No') {
+        
+        if (e.target.value === 'Yes') {
+          // Unlock fields
+          inputs.forEach(input => { input.disabled = false; });
+        } else {
+          // Lock fields and reset to 0 (Handles "No" and default option)
           inputs.forEach(input => { input.disabled = true; input.value = 0; });
           total.textContent = '0';
-        } else {
-          inputs.forEach(input => { input.disabled = false; });
         }
       }
     });
@@ -248,7 +267,6 @@
       tbody.appendChild(row);
     }
 
-    // UPDATED NAVIGATION LOGIC: CLEAN SPINNER INSTEAD OF TEXT
     async function navigate(fromStep, toStep) {
       if(fromStep === 1 && toStep === 2) {
         const email = document.getElementById('email').value;
@@ -259,11 +277,9 @@
           return; 
         }
 
-        // Real-time Database Check with SVG Spinner
         const nextBtn = document.getElementById('btnNextStep1');
         const originalText = nextBtn.innerHTML;
         
-        // Replace button text with spinning icon
         nextBtn.innerHTML = `<svg class="animate-spin h-6 w-6 text-white mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
         nextBtn.disabled = true;
 
@@ -275,13 +291,12 @@
             alert("NOTICE: This email address has already submitted a survey. Please use a different email or contact the CCA Secretariat.");
             nextBtn.innerHTML = originalText;
             nextBtn.disabled = false;
-            return; // Stops them from moving to Step 2
+            return; 
           }
         } catch(e) {
           console.error("Error verifying email, proceeding anyway:", e);
         }
 
-        // Restore button state if not a duplicate
         nextBtn.innerHTML = originalText;
         nextBtn.disabled = false;
       }
