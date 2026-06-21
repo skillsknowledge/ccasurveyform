@@ -30,7 +30,7 @@
   <script>
     // ==============================================
     // GOOGLE APPS SCRIPT URL: PASTE YOUR URL HERE
-    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz_QPBJm1mRBew7XuqTGMV-BPrwhNDTcF4CfaidfqZQpoWMKBsXcyUZH6jT_aWTD87koA/exec";
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxLgiKt318Dd6bLiB4hDlBfQDkalJsZ_6_lOY5fD38GdGXnuXyaaJNARYczUEm1WgqoYg/exec";
     // ==============================================
   </script>
 </head>
@@ -41,7 +41,6 @@
 
   <main class="main-card w-full max-w-5xl rounded-[2rem] p-8 md:p-12 relative overflow-hidden text-slate-800 z-10 shadow-2xl">
     
-    <!-- STEP 1: Profile -->
     <section id="step1" class="step-container active">
       <div class="section-header">
         <h1 class="text-3xl md:text-4xl font-black tracking-tight">Skills Survey</h1>
@@ -63,11 +62,10 @@
         <div class="md:col-span-2"><label class="block text-[#1e3a8a] font-bold mb-1 text-sm">Email Address (For Confirmation Copy) *</label><input type="email" id="email" class="modern-input w-full rounded-xl p-3 font-medium" placeholder="your@email.com"></div>
       </div>
 
-      <div class="flex justify-end mt-auto pt-4"><button onclick="navigate(1, 2)" class="btn-primary font-bold py-3 px-10 rounded-xl">Next &rarr;</button></div>
+      <div class="flex justify-end mt-auto pt-4"><button onclick="navigate(1, 2)" id="btnNextStep1" class="btn-primary font-bold py-3 px-10 rounded-xl min-w-[140px] flex justify-center items-center h-12">Next &rarr;</button></div>
       <div class="mt-8 pt-6 border-t border-slate-200 text-center opacity-80"><p class="text-xs font-bold text-[#1e3a8a] uppercase tracking-wide">Cebu Contractors Association, Inc.</p><p class="text-xs font-semibold text-slate-500 uppercase tracking-widest mt-0.5">Skills Survey</p></div>
     </section>
 
-    <!-- STEP 2: Civil Works -->
     <section id="step2" class="step-container">
       <div class="section-header">
         <h1 class="text-3xl md:text-4xl font-black tracking-tight">Civil Works</h1>
@@ -99,7 +97,6 @@
       <div class="mt-8 pt-6 border-t border-slate-200 text-center opacity-80"><p class="text-xs font-bold text-[#1e3a8a] uppercase tracking-wide">Cebu Contractors Association, Inc.</p></div>
     </section>
 
-    <!-- STEP 3: Specialty and finishing works -->
     <section id="step3" class="step-container">
       <div class="section-header">
         <h1 class="text-3xl md:text-4xl font-black tracking-tight">Specialty & Finishing</h1>
@@ -125,7 +122,6 @@
       <div class="mt-8 pt-6 border-t border-slate-200 text-center opacity-80"><p class="text-xs font-bold text-[#1e3a8a] uppercase tracking-wide">Cebu Contractors Association, Inc.</p></div>
     </section>
 
-    <!-- STEP 4: Heavy Equipment -->
     <section id="step4" class="step-container">
       <div class="section-header">
         <h1 class="text-3xl md:text-4xl font-black tracking-tight">Heavy Equipment</h1>
@@ -151,7 +147,6 @@
       <div class="mt-8 pt-6 border-t border-slate-200 text-center opacity-80"><p class="text-xs font-bold text-[#1e3a8a] uppercase tracking-wide">Cebu Contractors Association, Inc.</p></div>
     </section>
 
-    <!-- STEP 5: Other Skills -->
     <section id="step5" class="step-container">
       <div class="section-header">
         <h1 class="text-3xl md:text-4xl font-black tracking-tight">Other Skills</h1>
@@ -176,7 +171,6 @@
       <div class="mt-8 pt-6 border-t border-slate-200 text-center opacity-80"><p class="text-xs font-bold text-[#1e3a8a] uppercase tracking-wide">Cebu Contractors Association, Inc.</p></div>
     </section>
 
-    <!-- STEP 6: Final Section -->
     <section id="step6" class="step-container">
       <div class="section-header">
         <h1 class="text-3xl md:text-4xl font-black tracking-tight">Ready to Submit</h1>
@@ -200,13 +194,11 @@
       <div class="mt-8 pt-6 border-t border-slate-200 text-center opacity-80"><p class="text-xs font-bold text-[#1e3a8a] uppercase tracking-wide">Cebu Contractors Association, Inc.</p></div>
     </section>
 
-    <!-- STEP 7: Success Screen -->
     <section id="step7" class="step-container text-center space-y-6 py-16">
       <div id="loadingState" class="space-y-6"><div class="inline-block relative w-20 h-20"><div class="absolute top-0 left-0 w-full h-full border-4 border-slate-200 rounded-full"></div><div class="absolute top-0 left-0 w-full h-full border-4 border-[#1e3a8a] rounded-full border-t-transparent animate-spin"></div></div><h2 class="text-2xl font-bold text-slate-800 animate-pulse">Processing Submission...</h2></div>
       <div id="successState" class="hidden space-y-6"><div class="mx-auto w-24 h-24 bg-[#f97316] rounded-full flex items-center justify-center shadow-xl transform scale-0 animate-[popIn_0.5s_ease-out_forwards]"><svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div><h1 class="text-4xl font-extrabold text-[#1e3a8a]">Submission Successful!</h1><p class="text-slate-600 font-medium text-lg">Your data has been securely recorded. A confirmation email with a summary of your responses has been dispatched to your inbox.</p></div>
     </section>
 
-    <!-- PREVIEW MODAL -->
     <div id="previewModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 opacity-0 transition-opacity duration-300">
       <div class="bg-white rounded-2xl w-full max-w-4xl max-h-[85vh] overflow-hidden shadow-2xl relative flex flex-col">
         <div class="bg-[#1e3a8a] text-white p-6 flex justify-between items-center">
@@ -256,15 +248,42 @@
       tbody.appendChild(row);
     }
 
-    function navigate(fromStep, toStep) {
+    // UPDATED NAVIGATION LOGIC: CLEAN SPINNER INSTEAD OF TEXT
+    async function navigate(fromStep, toStep) {
       if(fromStep === 1 && toStep === 2) {
-        // ENFORCED: Must fill out required profile inputs
         const email = document.getElementById('email').value;
         const company = document.getElementById('company').value;
+        
         if(!email || !company) { 
           alert("Please fill in the required profile fields (Company & Email) before proceeding."); 
           return; 
         }
+
+        // Real-time Database Check with SVG Spinner
+        const nextBtn = document.getElementById('btnNextStep1');
+        const originalText = nextBtn.innerHTML;
+        
+        // Replace button text with spinning icon
+        nextBtn.innerHTML = `<svg class="animate-spin h-6 w-6 text-white mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
+        nextBtn.disabled = true;
+
+        try {
+          const response = await fetch(APPS_SCRIPT_URL + "?action=checkEmail&email=" + encodeURIComponent(email));
+          const data = await response.json();
+
+          if(data.duplicate) {
+            alert("NOTICE: This email address has already submitted a survey. Please use a different email or contact the CCA Secretariat.");
+            nextBtn.innerHTML = originalText;
+            nextBtn.disabled = false;
+            return; // Stops them from moving to Step 2
+          }
+        } catch(e) {
+          console.error("Error verifying email, proceeding anyway:", e);
+        }
+
+        // Restore button state if not a duplicate
+        nextBtn.innerHTML = originalText;
+        nextBtn.disabled = false;
       }
 
       const fromEl = document.getElementById(`step${fromStep}`);
