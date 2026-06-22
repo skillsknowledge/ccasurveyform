@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CCA Skills Survey</title>
+  <title>CCA Modern Skills Survey</title>
   <script src="https://cdn.tailwindcss.com"></script>
   
   <style>
@@ -29,8 +29,8 @@
 
   <script>
     // ==============================================
-    // GOOGLE APPS SCRIPT URL: PASTE YOUR URL HERE
-    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxLgiKt318Dd6bLiB4hDlBfQDkalJsZ_6_lOY5fD38GdGXnuXyaaJNARYczUEm1WgqoYg/exec";
+    // GOOGLE APPS SCRIPT URL: PASTE YOUR NEW URL HERE
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxx7SKUrbymKaczmaAZWH50ESJNtbNkO8XvOtuuKDM5-qDRAcEeIDSEdpTSnZMsMkbC7g/exec";
     // ==============================================
   </script>
 </head>
@@ -44,13 +44,13 @@
     <section id="step1" class="step-container active">
       <div class="section-header">
         <h1 class="text-3xl md:text-4xl font-black tracking-tight">Skills Survey</h1>
-        <h2 class="text-lg md:text-xl font-medium text-blue-200 mt-2">CEBU CONTRACTORS ASSOCIATION, INC.</h2>
+        <h2 class="text-lg md:text-xl font-medium text-blue-200 mt-2">Cover Letter & Profile</h2>
       </div>
       <div class="space-y-4 text-slate-600 font-medium text-base leading-relaxed">
         <p>Dear CCA Member,</p>
         <p>Great day. We are sending this Skills Survey to determine the technical training requirements of CCA members. This survey is particularly intended for contractors engaged in civil works and specialty works.</p>
-        <p>Accomplishing this survey would take approximately 5 minutes only. By answering this survey, you are helping CCA craft a relevant training program that would improve the productivity of the workers and the competitiveness of its members.</p>
-        <p>Please accomplish this survey on or before June 26. Should you need assistance, please don't hesitate to call your CCA Secretariat.</p>
+        <p>Accomplishing this survey would take approximately 10 minutes only. By answering this survey, you are helping CCA craft a relevant training program that would improve the productivity of the workers and the competitiveness of its members.</p>
+        <p>Please accomplish this survey on or before July 3. Should you need assistance, please don't hesitate to call your CCA Secretariat.</p>
         <p class="pt-2 font-bold text-slate-900">Thank you,<br>CCA Technical Working Group</p>
       </div>
       
@@ -74,12 +74,11 @@
       <div class="bg-white rounded-2xl overflow-hidden shadow-sm overflow-x-auto border border-slate-200 mb-8">
         <table class="w-full text-sm text-left">
           <thead class="text-xs uppercase bg-[#f8fafc] text-[#1e3a8a] border-b border-slate-200">
-            <tr><th class="px-6 py-4 font-bold min-w-[150px]">Type of Skills</th><th class="px-4 py-4 font-bold min-w-[180px]">Currently Used</th><th class="px-4 py-4 font-bold text-center">No TESDA NC</th><th class="px-4 py-4 font-bold text-center">With NC</th><th class="px-4 py-4 font-bold text-center">Prospective Training</th><th class="px-4 py-4 font-bold text-center">Total</th></tr>
+            <tr><th class="px-6 py-4 font-bold min-w-[150px]">Type of Skills</th><th class="px-4 py-4 font-bold min-w-[180px]">These skills are currently used in our operations</th><th class="px-4 py-4 font-bold text-center">No. of workers with skills but no TESDA NC</th><th class="px-4 py-4 font-bold text-center">No. of workers with NC</th><th class="px-4 py-4 font-bold text-center">Prospective No. of Workers for Training or Upskilling</th><th class="px-4 py-4 font-bold text-center">Total</th></tr>
           </thead>
           <tbody data-category="Civil Works" class="divide-y divide-slate-100">
             <script>
               ['Carpentry', 'Formworks', 'Masonry', 'Scaffold erection', 'Steel works', 'Welding'].forEach(skill => {
-                // UPDATED: Added "disabled" directly to the number inputs by default
                 document.write(`
                   <tr class="hover:bg-slate-50/50 transition-colors group">
                     <td class="px-6 py-4 font-bold text-slate-800 skill-name">${skill}</td>
@@ -106,7 +105,7 @@
       <div class="bg-white rounded-2xl overflow-hidden shadow-sm overflow-x-auto border border-slate-200 mb-8">
         <table class="w-full text-sm text-left">
           <thead class="text-xs uppercase bg-[#f8fafc] text-[#1e3a8a] border-b border-slate-200">
-            <tr><th class="px-6 py-4 font-bold min-w-[150px]">Type of Skills</th><th class="px-4 py-4 font-bold min-w-[180px]">Currently Used</th><th class="px-4 py-4 font-bold text-center">No TESDA NC</th><th class="px-4 py-4 font-bold text-center">With NC</th><th class="px-4 py-4 font-bold text-center">Prospective Training</th><th class="px-4 py-4 font-bold text-center">Total</th></tr>
+            <tr><th class="px-6 py-4 font-bold min-w-[150px]">Type of Skills</th><th class="px-4 py-4 font-bold min-w-[180px]">These skills are currently used in our operations</th><th class="px-4 py-4 font-bold text-center">No. of workers with skills but no TESDA NC</th><th class="px-4 py-4 font-bold text-center">No. of workers with NC</th><th class="px-4 py-4 font-bold text-center">Prospective No. of Workers for Training or Upskilling</th><th class="px-4 py-4 font-bold text-center">Total</th></tr>
           </thead>
           <tbody data-category="Specialty & Finishing" class="divide-y divide-slate-100">
             <script>
@@ -138,7 +137,7 @@
       <div class="bg-white rounded-2xl overflow-hidden shadow-sm overflow-x-auto border border-slate-200 mb-8">
         <table class="w-full text-sm text-left">
           <thead class="text-xs uppercase bg-[#f8fafc] text-[#1e3a8a] border-b border-slate-200">
-            <tr><th class="px-6 py-4 font-bold min-w-[150px]">Type of Skills</th><th class="px-4 py-4 font-bold min-w-[180px]">Currently Used</th><th class="px-4 py-4 font-bold text-center">No TESDA NC</th><th class="px-4 py-4 font-bold text-center">With NC</th><th class="px-4 py-4 font-bold text-center">Prospective Training</th><th class="px-4 py-4 font-bold text-center">Total</th></tr>
+            <tr><th class="px-6 py-4 font-bold min-w-[150px]">Type of Skills</th><th class="px-4 py-4 font-bold min-w-[180px]">These skills are currently used in our operations</th><th class="px-4 py-4 font-bold text-center">No. of workers with skills but no TESDA NC</th><th class="px-4 py-4 font-bold text-center">No. of workers with NC</th><th class="px-4 py-4 font-bold text-center">Prospective No. of Workers for Training or Upskilling</th><th class="px-4 py-4 font-bold text-center">Total</th></tr>
           </thead>
           <tbody data-category="Heavy Equipment" class="divide-y divide-slate-100">
             <script>
@@ -170,7 +169,7 @@
       <div class="bg-white rounded-2xl overflow-hidden shadow-sm overflow-x-auto border border-slate-200">
         <table class="w-full text-sm text-left">
           <thead class="text-xs uppercase bg-[#f8fafc] text-[#1e3a8a] border-b border-slate-200">
-            <tr><th class="px-6 py-4 font-bold min-w-[200px]">Specific Skill Name</th><th class="px-4 py-4 font-bold text-center">No TESDA NC</th><th class="px-4 py-4 font-bold text-center">With NC</th><th class="px-4 py-4 font-bold text-center">Prospective Training</th><th class="px-4 py-4 font-bold text-center">Total</th></tr>
+            <tr><th class="px-6 py-4 font-bold min-w-[200px]">Specific Skill Name</th><th class="px-4 py-4 font-bold text-center">No. of workers with skills but no TESDA NC</th><th class="px-4 py-4 font-bold text-center">No. of workers with NC</th><th class="px-4 py-4 font-bold text-center">Prospective No. of Workers for Training or Upskilling</th><th class="px-4 py-4 font-bold text-center">Total</th></tr>
           </thead>
           <tbody id="otherSkillsBody" data-category="Other Skills" class="divide-y divide-slate-100">
             <script>
@@ -231,7 +230,6 @@
   </main>
 
   <script>
-    // UPDATED LOGIC: Inputs only unlock when "Yes" is explicitly selected
     document.addEventListener('change', (e) => {
       if (e.target.classList.contains('currently-used')) {
         const row = e.target.closest('tr');
@@ -239,10 +237,8 @@
         const total = row.querySelector('.row-total');
         
         if (e.target.value === 'Yes') {
-          // Unlock fields
           inputs.forEach(input => { input.disabled = false; });
         } else {
-          // Lock fields and reset to 0 (Handles "No" and default option)
           inputs.forEach(input => { input.disabled = true; input.value = 0; });
           total.textContent = '0';
         }
