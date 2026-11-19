@@ -53,7 +53,7 @@ const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyeQd0HtZTP-89W
 </div>
 
 <!-- THE HONEYPOT FIELD -->
-<input type="text" id="bot-trap-field" name="company_website_url" class="visually-hidden" autocomplete="off" tabindex="-1">
+<input type="text" id="bot-trap-field" name="hp_x7" class="visually-hidden" autocomplete="off" tabindex="-1" aria-hidden="true">
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-8 mb-6">
 <div><label class="block text-[#1e3a8a] font-bold mb-1 text-sm">Company *</label><input type="text" id="company" class="modern-input w-full rounded-xl p-3 font-medium"></div>
@@ -207,7 +207,7 @@ document.write(`<tr class="hover:bg-slate-50/50 transition-colors"><td class="px
 <!-- STEP 7: Success Screen -->
 <section id="step7" class="step-container text-center space-y-6 py-16">
 <div id="loadingState" class="space-y-6"><div class="inline-block relative w-20 h-20"><div class="absolute top-0 left-0 w-full h-full border-4 border-slate-200 rounded-full"></div><div class="absolute top-0 left-0 w-full h-full border-4 border-[#1e3a8a] rounded-full border-t-transparent animate-spin"></div></div><h2 class="text-2xl font-bold text-slate-800 animate-pulse">Processing Submission...</h2></div>
-<div id="successState" class="hidden space-y-6"><div class="mx-auto w-24 h-24 bg-[#f97316] rounded-full flex items-center justify-center shadow-xl transform scale-0 animate-[popIn_0.5s_ease-out_forwards]"><svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div><h1 class="text-4xl font-extrabold text-[#1e3a8a]">Submission Successful!</h1><p class="text-slate-600 font-medium text-lg">Your data has been securely recorded.</p></div>
+<div id="successState" class="hidden space-y-6"><div class="mx-auto w-24 h-24 bg-[#f97316] rounded-full flex items-center justify-center shadow-xl transform scale-0 animate-[popIn_0.5s_ease-out_forwards]"><svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div><h1 class="text-4xl font-extrabold text-[#1e3a8a]">Submission Successful!</h1><p class="text-slate-600 font-medium text-lg">Your data has been securely recorded.</p><p class="text-slate-500 text-base">A confirmation email has been sent to your email address. If you do not see it, please check your spam folder.</p></div>
 </section>
 <!-- PREVIEW MODAL -->
 <div id="previewModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 opacity-0 transition-opacity duration-300">
@@ -355,17 +355,30 @@ async function submitSurvey() {
 const payload = gatherPayload();
 navigate(6, 7);
 try {
-await fetch(APPS_SCRIPT_URL, {
+let out;
+try {
+const res = await fetch(APPS_SCRIPT_URL, {
 method: 'POST',
-mode: 'no-cors',
 headers: { 'Content-Type': 'text/plain;charset=utf-8' },
 body: JSON.stringify(payload)
 });
+out = await res.json();
+} catch (netErr) {
+// The browser could not read the reply. Confirm whether the data was saved.
+const chk = await fetch(APPS_SCRIPT_URL + "?action=checkEmail&email=" + encodeURIComponent(payload.meta.email));
+const c = await chk.json();
+if (c.duplicate) { out = { result: 'success' }; } else { throw netErr; }
+}
+if (out.result === 'duplicate') throw new Error('This email address has already submitted a survey. Please use a different email or contact the CCA Secretariat.');
+if (out.result !== 'success') throw new Error(out.message || out.error || 'Submission failed. Please try again.');
 document.getElementById('loadingState').classList.add('hidden');
 document.getElementById('successState').classList.remove('hidden');
 } catch (error) {
-alert('Notice: There was an issue submitting your data. If you have already submitted a survey using this email address, our system will not accept duplicates. Otherwise, please check your network connection.');
 console.error('Submission Error:', error);
+const msg = (error instanceof TypeError)
+? 'There was a problem submitting your data. Please check your internet connection and try again.'
+: error.message;
+alert(msg);
 navigate(7, 6);
 }
 }
